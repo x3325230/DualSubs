@@ -1157,7 +1157,7 @@
 					"name": "字幕类型（兼容）",
 					"val": "Official",
 					"type": "selects",
-					"desc": "请选择要替换的字幕类型，会为兼容播放器替换为此字幕类型",
+					"desc": "请选择要替换的字幕类型，会为不兼容的播放器替换为此字幕类型",
 					"items": [
 						{
 							"key": "Official",
@@ -1405,6 +1405,39 @@
 					"val": "Google",
 					"type": "checkboxes",
 					"desc": "请选择要添加的字幕类型，会为标准播放器添加以下字幕选项",
+					"items": [
+						{
+							"key": "Official",
+							"label": "官方"
+						},
+						{
+							"key": "Google",
+							"label": "Google Translate"
+						},
+						{
+							"key": "GoogleCloud",
+							"label": "Google Cloud Translate API"
+						},
+						{
+							"key": "Azure",
+							"label": "Azure Translator"
+						},
+						{
+							"key": "DeepL",
+							"label": "DeepL API"
+						},
+						{
+							"key": "External",
+							"label": "外部链接"
+						}
+					]
+				},
+				{
+					"id": "@DualSubs.Hulu.Settings.Type",
+					"name": "字幕类型（兼容）",
+					"val": "Official",
+					"type": "selects",
+					"desc": "请选择要替换的字幕类型，会为不兼容的播放器替换为此字幕类型",
 					"items": [
 						{
 							"key": "Official",
@@ -2491,7 +2524,7 @@
 					"name": "字幕类型（兼容）",
 					"val": "Official",
 					"type": "selects",
-					"desc": "请选择要替换的字幕类型，会为兼容播放器替换为此字幕类型",
+					"desc": "请选择要替换的字幕类型，会为不兼容的播放器替换为此字幕类型",
 					"items": [
 						{
 							"key": "Official",

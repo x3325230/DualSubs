@@ -94,6 +94,7 @@
 		"Types": [ // Official, Google, DeepL, External
 			"Google"
 		],
+		"Type": "Google", // Official, Google, DeepL, External
 		"Languages": [
 			"ZH",
 			"EN"
