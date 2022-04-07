@@ -68,7 +68,12 @@ let body = $response.body
 				$.log(`🚧 ${$.name}, 外挂字幕`, `SecondVTT: ${JSON.stringify(SecondVTT)}`, "");
 				DualSub = await CombineDualSubs(OriginVTT, SecondVTT, $.Settings.Offset, $.Settings.Tolerance, [$.Settings.Position]);
 			}
-			async function getWebVTT(request) { return await $.http.get(request).then(response => VTT.parse(response.body)); }
+			async function getWebVTT(request) {
+				return await $.http.get(request).then(response => {
+					$.log(`🚧 ${$.name}, 外挂字幕`, `response: ${JSON.stringify(response)}`, "");
+					return VTT.parse(response.body)
+				});
+			}
 		} else {
 			$.log(`🚧 ${$.name}`, `翻译字幕`, "");
 			DualSub = OriginVTT;
