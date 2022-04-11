@@ -13,6 +13,8 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
 - [🍿️ DualSubs](#️-dualsubs)
   - [功能列表](#功能列表)
   - [使用说明](#使用说明)
+    - [安装说明](#安装说明)
+    - [配置说明](#配置说明)
   - [安装链接](#安装链接)
     - [🍿️ DualSubs for Streaming Media Platform](#️-dualsubs-for-streaming-media-platform)
     - [🍿️ DualSubs for Youtube](#️-dualsubs-for-youtube)
@@ -44,19 +46,34 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
      * `逐段翻译`对于大分段的字幕文件的平台（如：HBO Max）响应更快，翻译效果更好，利于限制使用频率的翻译API。
 
 ## 使用说明
+### 安装说明
   * 直接使用
     * 采用默认配置
       * 默认主语言`中文（自动）`，副语言`英文（自动）`
       * 提供中文的平台仅启用`官方字幕`
       * 未提供中文的平台仅启用`Google翻译`
   * 配合`BoxJs`及订阅使用
-    1. 安装`BoxJs`插件:
+    1. 安装`BoxJs`插件并更新引用资源或脚本:
        * Loon: [boxjs.rewrite.loon.plugin](https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.loon.plugin "BoxJs")
        * Quantumult X: [boxjs.rewrite.quanx.conf](https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf "BoxJs")
        * Surge (Shadowrocket): [boxjs.rewrite.surge.sgmodule](https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.surge.sgmodule "BoxJs")
        * Stash: [boxjs.rewrite.stash.stoverride](https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.stash.stoverride "BoxJs")
-    2. 浏览器访问[BoxJs.com](http://boxjs.com)，在`订阅`页面点击`+`添加本项目订阅:
+    2. 浏览器访问[BoxJs.com](http://boxjs.com)，在[`订阅`](http://boxjs.com/#/sub)页面点击`+`添加本项目订阅:
        * [DualSubs.box.json](./box/DualSubs.box.json?raw=true "🍿️ DualSubs")
+### 配置说明
+  * 配合`BoxJs`及订阅使用
+    1. 浏览器访问[BoxJs.com](http://boxjs.com)
+    2. 在[`应用`](http://boxjs.com/#/app)页面点开`DualSubs`折叠
+    3. 根据需要配置每个流媒体平台的设置
+       1. `字幕类型`为多选框，多选保存后，对应APP中的`字幕`选项也会增加对应的字幕选项
+       2. `首选语言`为主语言，对应第一行字幕语言
+       3. `次选语言`为副语言，对应第二行字幕语言
+       4. 需在`字幕类型`中勾选`外部字幕`,`外部字幕文件URL`中填写的字幕文件才会生效（需要为绝对路径，支持WebVTT, SRT）
+       5. `外部字幕偏移量`为内置字幕时间轴矫正功能，时间单位为毫秒，正负整数，可以用来省略第三方字幕转换器
+       6. `播放记录缓存数量`提供设置数量的复数缓存空间，当你的设备同时为局域网内多个设备提供流媒体平台字幕增强功能时，保证字幕数据不会错乱，同时对于`Disney+`这种自带长期缓存的流媒体平台，提供更好的兼容性
+       7. `时间戳公差`为`官方字幕`或`外部字幕`匹配时，每句字幕匹配时的时间容差，因同平台同视频不同语言字幕往往交付不同翻译人员进行翻译，相同台词的时间戳可能有0.5秒-1.5秒乃至更多的误差，或者一句台词对应另外一种语言多句台词的情况，`时间戳公差`值会将此误差范围的台词视为同一句台词进行合并，且支持一句台词对多句台词合并
+    4. (可选)在`DualSubs: Verify`中配置第三方API验证信息
+    5. (可选)在`DualSubs: Advanced Options`中配置高级设置
 
 ## 安装链接
 ### 🍿️ DualSubs for Streaming Media Platform
@@ -66,15 +83,18 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
   * Stash: [DualSubs.stoverride](./stoverride/DualSubs.stoverride?raw=true "🍿️ DualSubs for Streaming Media Platform")
 
 ### 🍿️ DualSubs for Youtube
-  * 当前仅支持Web端有字幕视频的自动翻译及全翻译语言解锁
+  * 当前仅支持Web端有字幕视频的自动翻译及全翻译语言解锁及双语言
+    * 当选择任意语言`普通字幕`时，双语字幕`首选语言`均为BoxJs中设置的`首选语言`且为翻译字幕（暂未做官方字幕查询）
+    * 当选择`自动翻译`中的`翻译字幕`时，双语字幕分别为`原语言`及`目标语言`
   * Loon: [DualSubs.YouTube.plugin](./plugins/DualSubs.YouTube.plugin?raw=true "🍿️ DualSubs for Youtube")
   * Quantumult X: [DualSubs.YouTube.qxrewrite](./qxrewrite/DualSubs.YouTube.qxrewrite?raw=true "🍿️ DualSubs for Youtube")
   * Surge (Shadowrocket): [DualSubs.YouTube.sgmodule](./sgmodules/DualSubs.YouTube.sgmodule?raw=true "🍿️ DualSubs for Youtube")
   * Stash: [DualSubs.YouTube.stoverride](./stoverride/DualSubs.YouTube.stoverride?raw=true "🍿️ DualSubs for Youtube")
 
 ## How To
-  * [在Apple TV (tvOS) 上添加MitM证书](https://github.com/DualSubs/DualSubs/wiki/在Apple-TV-(tvOS)-上添加MitM证书)
-  * [在BoxJs中清除DualSubs的储存数据](https://github.com/DualSubs/DualSubs/wiki/在BoxJs中清除DualSubs的储存数据)
+  * [快速创建拥有代理服务器设置及MitM证书的描述文件](https://github.com/DualSubs/DualSubs/wiki/快速创建拥有代理服务器设置及MitM证书的描述文件)
+  * [在Apple TV (tvOS) 上添加描述文件并信任证书](https://github.com/DualSubs/DualSubs/wiki/在Apple-TV-(tvOS)-上添加MitM证书)
+  * [在BoxJs中清除DualSubs的设置或缓存](https://github.com/DualSubs/DualSubs/wiki/在BoxJs中清除DualSubs的储存数据)
 
 ## 支持列表
   * 图例:
@@ -88,14 +108,15 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
 
 |  供应商  |iOS/iPadOS|  tvOS  |  macOS  | Appx | Web | 备注 |
 |   :-:   |   :-:   |   :-:   |   :-:   |   :-:   |   :-:   |   :-:   |
-|Apple TV+|   [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)   |   [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)   |   ✅   |   N/A   | [✅](https://tv.apple.com/hk/)[^2] | 指Apple TV app中的订阅内容 |
-|Apple TV | [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)[^2] | [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)[^2] | ✅[^2] |   N/A   |   N/A   | 指Apple TV app中的买断或租借内容[^1] |
+| YouTube |   🔜[^7]   |   ❌[^8]   |   N/A   |   N/A   |   ✅   |        |
+|Apple TV+|   [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)   |   [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)   |   ✅[^5]   |   N/A   | [✅](https://tv.apple.com/hk/)[^2] | 指Apple TV app中的订阅内容 |
+|Apple TV | [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)[^2] | [✅](https://apps.apple.com/hk/app/apple-tv/id1174078549)[^2] | ✅[^2][^5] |   N/A   |   N/A   | 指Apple TV app中的买断或租借内容[^1] |
 |Apple Fitness| [✅](https://apps.apple.com/cn/app/fitness/id1208224953)[^2] | ✅[^2] |   N/A   |   N/A   |   N/A   | [^1] |
 | Disney+ |   [✅](https://apps.apple.com/hk/app/disney/id1446075923)   |   [✅](https://apps.apple.com/hk/app/disney/id1446075923)   |   N/A   |   [✅](https://www.microsoft.com/zh-cn/p/disney/9nxqxxlfst89)   |   [✅](https://www.disneyplus.com/zh-hans/home)   |        |
 |Prime Video| [✅](https://apps.apple.com/hk/app/amazon-prime-video/id545519333)[^5] |   [✅](https://apps.apple.com/hk/app/amazon-prime-video/id545519333)   | [🔜](https://apps.apple.com/hk/app/amazon-prime-video/id545519333)[^3] |   [🔜](https://www.microsoft.com/zh-cn/p/amazon-prime-video-for-windows/9p6rc76msmmj?activetab=pivot:overviewtab)[^3] | [🔜](https://www.primevideo.com)[^3] |        |
 | HBO Max | [☑️](https://apps.apple.com/us/app/hbo-max-stream-tv-movies/id971265422)[^4] | [✅](https://apps.apple.com/us/app/hbo-max-stream-tv-movies/id971265422) |   N/A   |   [❓](https://www.microsoft.com/zh-cn/p/hbo-max/9pjj1k9dzmrs)   | [☑️](https://play.hbomax.com)[^4] |        |
 |  Hulu   |   [✅](https://apps.apple.com/us/app/hulu-watch-tv-series-movies/id376510438)   |   [✅](https://apps.apple.com/us/app/hulu-watch-tv-series-movies/id376510438)   |   N/A   |   N/A   | [🔜](https://www.hulu.com/)[^6] |        |
-|Paramount+|   [✅](https://apps.apple.com/us/app/paramount/id530168168)   |   [✅](https://apps.apple.com/us/app/paramount/id530168168)   |   N/A   |   ❓   |   ❓   |        |
+|Paramount+|   [✅](https://apps.apple.com/us/app/paramount/id530168168)   |   [✅](https://apps.apple.com/us/app/paramount/id530168168)   |   N/A   |   ❓   |   ✅   |        |
 |Discovery+<br>Philippines|   [✅](https://apps.apple.com/ph/app/discovery-stream-tv-shows/id1574345720)   |   ❓   |   ❓   |   ❓   |   [✅](https://www.discoveryplus.com/ph/)   |        |
 |         |         |         |         |         |         |        |
 
@@ -105,3 +126,5 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
   [^4]: 此平台字幕选项为硬编码，需要在BoxJs中对应平台的`字幕类型（兼容）`选项选择一个替换用字幕类型
   [^5]: 采用旧版`AVPlayerViewController`播放器UI界面，自定义字幕名称会被强制显示为固定名称，比如多个名称为`简体中文`的选项，依次为原始字幕选项及BoxJs中开启的字幕选项，除显示的名称固定外，字幕选项功能正常。
   [^6]: 此平台字幕采用[SAMI](https://docs.microsoft.com/zh-cn/previous-versions/windows/desktop/dnacc/understanding-sami-1.0?redirectedfrom=MSDN)格式字幕，暂不支持
+  [^7]: 此平台使用protobuf序列化数据，需要等待反序列化完成
+  [^8]: 此平台并非使用HTTPS或HTTPS over TCP传输数据流，暂无MitM修改方法
